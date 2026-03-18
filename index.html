@@ -1,0 +1,40 @@
+<script>
+
+let users = [];
+
+function addName(){
+let name = document.getElementById("name").value;
+
+if(name==""){
+alert("Enter name");
+return;
+}
+
+let ticket = "LD" + Math.floor(1000 + Math.random()*9000);
+
+users.push({name: name, ticket: ticket});
+
+let li = document.createElement("li");
+li.innerText = name + " (Ticket: " + ticket + ")";
+
+document.getElementById("list").appendChild(li);
+
+document.getElementById("name").value = "";
+}
+
+function pickWinner(){
+
+if(users.length==0){
+alert("No users");
+return;
+}
+
+let random = Math.floor(Math.random()*users.length);
+
+let winner = users[random];
+
+document.getElementById("winner").innerText =
+"🏆 Winner: " + winner.name + " (Ticket: " + winner.ticket + ")";
+}
+
+</script>
